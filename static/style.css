@@ -1,0 +1,26 @@
+body {
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+li {
+    background: rgba(255,255,255,0.15);
+    margin: 5px;
+    padding: 8px;
+    border-radius: 6px;
+}
