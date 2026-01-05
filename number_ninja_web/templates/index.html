@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Ninja</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🥷 Number Ninja</h1>
+
+    <div id="login">
+        <input id="name" placeholder="Your Name">
+        <select id="mode">
+            <option value="single">Single Player</option>
+            <option value="multi">Multiplayer</option>
+        </select>
+        <input id="room" placeholder="Room Code (Multiplayer only)">
+        <button onclick="startGame()">Start</button>
+    </div>
+
+    <div id="game" class="hidden">
+        <p id="hint">Guess between 1-100</p>
+        <input id="guess" type="number">
+        <button onclick="makeGuess()">Guess</button>
+        <p id="attempts">Attempts: 0</p>
+    </div>
+
+    <div id="win" class="hidden">
+        <h2>🎉 You Win!</h2>
+        <button onclick="location.reload()">Play Again</button>
+    </div>
+
+    <h2>🏆 Leaderboard</h2>
+    <ul id="board"></ul>
+</div>
+
+<audio id="winSound" src="/static/sounds/win.wav"></audio>
+<audio id="clickSound" src="/static/sounds/click.wav"></audio>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
