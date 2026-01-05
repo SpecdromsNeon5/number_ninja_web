@@ -1,43 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Number Ninja</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
 <div class="container">
-    <h1>🥷 Number Ninja</h1>
-
-    <div id="login">
-        <input id="name" placeholder="Your Name">
-        <select id="mode">
+    <h1>Number Ninja 🥷</h1>
+    
+    <div id="startScreen">
+        <input type="text" id="playerName" placeholder="Enter your name">
+        <select id="modeSelect">
             <option value="single">Single Player</option>
             <option value="multi">Multiplayer</option>
         </select>
-        <input id="room" placeholder="Room Code (Multiplayer only)">
-        <button onclick="startGame()">Start</button>
+        <input type="text" id="roomCode" placeholder="Room Code (for multiplayer)">
+        <button id="startBtn">Start Game</button>
+    </div>
+    
+    <div id="gameScreen" style="display:none;">
+        <p id="guessPrompt">Guess a number between 1-100</p>
+        <input type="number" id="guessInput">
+        <button id="guessBtn">Guess</button>
+        <p id="attemptsText">Attempts: 0</p>
+        <p id="hintText"></p>
     </div>
 
-    <div id="game" class="hidden">
-        <p id="hint">Guess between 1-100</p>
-        <input id="guess" type="number">
-        <button onclick="makeGuess()">Guess</button>
-        <p id="attempts">Attempts: 0</p>
+    <div id="leaderboardScreen">
+        <h2>Leaderboard</h2>
+        <ul id="leaderboardList"></ul>
     </div>
-
-    <div id="win" class="hidden">
-        <h2>🎉 You Win!</h2>
-        <button onclick="location.reload()">Play Again</button>
-    </div>
-
-    <h2>🏆 Leaderboard</h2>
-    <ul id="board"></ul>
 </div>
 
-<audio id="winSound" src="/static/sounds/win.wav"></audio>
-<audio id="clickSound" src="/static/sounds/click.wav"></audio>
-
-<script src="/static/script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

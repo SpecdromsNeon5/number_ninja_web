@@ -1,26 +1,39 @@
 body {
-    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color: white;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #fff;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    margin-top: 40px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
 }
 
 input, select, button {
     padding: 10px;
-    margin: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
 }
 
-.hidden {
-    display: none;
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
 }
 
-li {
-    background: rgba(255,255,255,0.15);
-    margin: 5px;
-    padding: 8px;
-    border-radius: 6px;
+button:hover {
+    background-color: #45a049;
+}
+
+#leaderboardList {
+    list-style-type: none;
+    padding: 0;
 }
