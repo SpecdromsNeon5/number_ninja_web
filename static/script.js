@@ -5,11 +5,11 @@ let gameMode = "single";
 let roomCode = "";
 
 // Sounds
-const winSound = new Audio("static/sounds/win.wav");
-const loseSound = new Audio("static/sounds/lose.wav");
-const clickSound = new Audio("static/sounds/click.wav");
+const winSound = new Audio("/static/sounds/win.wav");
+const loseSound = new Audio("/static/sounds/lose.wav");
+const clickSound = new Audio("/static/sounds/click.wav");
 
-// DOM Elements
+// Elements
 const startBtn = document.getElementById("startBtn");
 const guessBtn = document.getElementById("guessBtn");
 const guessInput = document.getElementById("guessInput");
@@ -28,7 +28,11 @@ startBtn.addEventListener("click", async () => {
     const response = await fetch("/start_game", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: playerName, mode: gameMode, room: roomCode })
+        body: JSON.stringify({
+            name: playerName,
+            mode: gameMode,
+            room: roomCode
+        })
     });
 
     const data = await response.json();
@@ -41,13 +45,14 @@ startBtn.addEventListener("click", async () => {
     hintText.textContent = "";
 });
 
-// Make Guess
+// Guess Number
 guessBtn.addEventListener("click", async () => {
     clickSound.play();
 
     const guess = Number(guessInput.value);
+
     if (!guess || guess < 1 || guess > 100) {
-        hintText.textContent = "⚠️ Enter a number between 1-100";
+        hintText.textContent = "⚠️ Enter a number between 1 and 100";
         return;
     }
 
@@ -56,10 +61,16 @@ guessBtn.addEventListener("click", async () => {
     const response = await fetch("/check_guess", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ guess: guess, secret: secretNumber, name: playerName, attempts: attempts })
+        body: JSON.stringify({
+            guess: guess,
+            secret: secretNumber,
+            name: playerName,
+            attempts: attempts
+        })
     });
 
     const data = await response.json();
+
     hintText.textContent = data.hint;
     attemptsText.textContent = `Attempts: ${attempts}`;
 
